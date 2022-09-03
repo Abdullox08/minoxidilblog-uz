@@ -1,0 +1,11 @@
+const {Router} = require('express')
+const adminRoute = Router()
+// const {guestAdmin} = require('../middlewares/auth')
+const upload = require('../utils/uploadFile')
+const {adminLoginPage,adminHomePage,newAddPost, adminLogin, adminShop,} = require('../controllers/adminControllers')
+adminRoute.get('/adminlogin',adminLoginPage)
+adminRoute.get('/adminhome',adminHomePage)
+adminRoute.get('/adminshop',adminShop)
+adminRoute.post('/adminhome',adminLogin)
+adminRoute.post('/posteradd',upload.single('image'), newAddPost)
+module.exports = adminRoute
